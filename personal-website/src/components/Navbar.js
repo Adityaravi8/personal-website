@@ -1,16 +1,7 @@
-import React from 'react';
-import "../styles/Navbar.css";
-import "../styles/MediaQueries.css";
+import React from "react";
 
-function Navbar () {
-
-    return (
-        <div>
-
-        </div>
-
-    )
-
+function Navbar() {
+  return <div></div>;
 }
 
 export default Navbar;

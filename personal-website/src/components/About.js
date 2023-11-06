@@ -1,17 +1,7 @@
-import React from 'react';
-import "../styles/About.css";
-import "../styles/MediaQueries.css";
+import React from "react";
 
-function About () {
-
-    return (
-        <div>
-            
-
-        </div>
-
-    )
-
+function About() {
+  return <div></div>;
 }
 
 export default About;

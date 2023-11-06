@@ -1,16 +1,7 @@
-import React from 'react';
-import "../styles/Projects.css";
-import "../styles/MediaQueries.css";
+import React from "react";
 
-function Projects () {
-
-    return (
-        <div>
-
-        </div>
-
-    )
-
+function Projects() {
+  return <div></div>;
 }
 
 export default Projects;
