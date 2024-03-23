@@ -9,7 +9,7 @@ function Navbar() {
   };
 
   return (
-    <div className="fixed w-full h-[90px] flex flex-row items-center justify-between text-white px-3 font-serif bg-black">
+    <div className="fixed w-full h-[90px] flex flex-row items-center justify-between text-white px-3 font-serif bg-black z-10">
       <h1 className="ml-5 text-2xl p-3">Aditya Ravi</h1>
       <div className="flex flex-row gap-10 text-2xl justify-end items-center p-3">
         {/*DESKTOP NAV */}
