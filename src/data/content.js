@@ -2,7 +2,7 @@ export const hero = {
   name: "Aditya Ravi",
   tagline: "Software Engineering Student",
   summary:
-    "I love building things for the web and solving problems with code. Currently pursuing my CS degree and looking for opportunities to grow as a developer.",
+    "I love building things and solving real world problems through software development. Currently pursuing my Software Engineering degree and looking for opportunities to grow as a software engineer.",
   github: "https://github.com/adityaravi8",
   linkedin: "https://linkedin.com/in/aditya-ravi1b74aa241",
   email: "aditya.ravi@live.com",
@@ -11,12 +11,11 @@ export const hero = {
 
 export const about = {
   paragraphs: [
-    "I'm a Computer Science student passionate about web development, problem-solving, and building software that makes a difference. I enjoy working with modern technologies and am always eager to learn something new.",
-    "When I'm not coding, you can find me exploring open-source projects, participating in hackathons, or reading about the latest trends in tech. I'm currently looking for internship and entry-level opportunities where I can contribute and grow.",
+    "I'm a Software engineering student passionate about AI, problem-solving, and building software that makes a difference. I have hands on experience working with cloud infrastructure, full-stack web development, through my various internships and personal projects.",
+    "When I'm not coding, you can find me working out, hanging out with friends, or exploring. I'm currently looking for internship for summer 2026 and entry-level opportunities where I can continue contributing and grow.",
   ],
   highlights: [
-    "Currently pursuing B.S. in Software Engineering at Ontario Tech University",
-    "Passionate about full-stack web development",
+    "Currently pursuing B.Eng. in Software Engineering at Ontario Tech University",
   ],
 };
 
@@ -24,41 +23,47 @@ export const experience = [
   {
     title: "Full Stack Developer Intern",
     company: "CGI",
+    location: "Victoria, BC",
     date: "May 2025 – Dec 2025",
     bullets: [
-      "Developed and implemented an AI-powered toolkit using Lang Chain to automatically generate technical design documents from legacy code bases, improving documentation efficiency by 30%.",
-      "Led end-to-end modernization of legacy applications through AI-driven refactoring and automation, achieving 50% cost savings and faster delivery for the client.",
-      "Presented the AI modernization strategy to executives both on the client and internal side, demonstrating business impact and technical scalability.",
-      "Trained and prepared 4 developers to apply the AI-assisted process for future legacy system rebuilds, ensuring scalability, consistency, and long-term adoption.",
+      "Leveraging AI tools to modernize legacy applications for an enterprise client",
+      "Designed an AI-powered toolkit that generates technical design documents from legacy codebases to help with understanding old applications.",
+      "Presented the AI modernization strategy to executives within CGI and the client, demonstrating business value and technical scalability.",
+      "Created the AI-assisted workflow adopted by multiple developers for future application rebuilds.",
     ],
   },
   {
     title: "Infrastructure Analyst Intern",
-    company: "BMO",
+    company: "Bank of Montreal",
+    location: "Toronto, ON",
     date: "Jan 2025 – Apr 2025",
     bullets: [
-      "Utilized Ansible to automate repetitive database processes resulting in 40% improved workflow",
-      " Implemented 10+ AWS CloudWatch Alarms to monitor infrastructure performance and AWS resources, resulting in a 30% improvement in proactive issue detection and system reliability.",
+      "Worked on infrastructure automation and monitoring to improve system reliability and operational efficiency.",
+      "Automated repetitive database workflows using Ansible.",
+      "Implemented proactive monitoring through deploying AWS CloudWatch alarms to detect infrastructure issues early.",
     ],
   },
   {
     title: "Software Developer Intern",
     company: "Ontario Tech University",
+    location: "Oshawa, ON",
     date: "Jun 2024 – Aug 2024",
     bullets: [
-      "Implemented a navigation algorithm for a group of 4 robots that incorporated spatial and subject awareness of each other, enabling coordinated movement and improving overall navigation efficiency by 20%",
-      "Leveraged ROS 2 to implement over 10+ custom features, enabling seamless operation and enhanced functionality on physical agents.",
-      "Calibrated a reinforcement learning algorithm that sped up training of the models by 15%",
+      "Built a coordinated navigation algorithm enabling multiple robots to move intelligently in shared environments.",
+      "Implemented custom ROS 2 features on physical agents.",
+      "Optimized reinforcement learning algorithm to improve training performance.",
     ],
   },
   {
-    title: "Full Stack Developer Intern",
-    company: "Global Black Alliances Inc",
+    title: "Full Stack Developer",
+    company: "Global Black Alliance Inc.",
+    location: "Toronto, ON",
     date: "Feb 2024 – Mar 2024",
     bullets: [
-      "Led a team of 3 students in cross-functional collaboration and requirements gathering to design the web interface support tool for the Real Ones application",
-      "Developed a dynamic interface using Next.js that enables seamless modification of business details, improving administrative efficiency by 20%",
-      "Engineered a feature to identify and remove duplicate business applications, reducing redundancy by 30% and enhancing overall data integrity.",
+      "Built and shipped full-stack features for an internal web platform supporting business application management.",
+      "Designed and developed a Next.js admin interface for managing business data.",
+      "Implemented a feature to detect and remove duplicate business applications.",
+      "Led a small team through requirements gathering and delivery for the project.",
     ],
   },
 ];
@@ -73,8 +78,16 @@ export const projects = [
   {
     title: "Workout Tracker",
     description: "A full stack app to keep track of your workouts.",
-    tech: ["React.js", "Node.js", "MongoDB", "Express.js", "Docker", "CSS"],
+    tech: [
+      "React.js",
+      "Node.js",
+      "MongoDB",
+      "Express.js",
+      "Docker",
+      "Tailwind CSS",
+    ],
     github: "https://github.com/Adityaravi8/Workout-Tracker",
+    live: "https://workout-tracker-jade-five.vercel.app/",
   },
   {
     title: "AI Travel Planner",

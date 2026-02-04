@@ -22,7 +22,9 @@ export default function Experience() {
               <span className="timeline-dot absolute -left-[11px] top-8 w-4 h-4 bg-blue-400 rounded-full" />
 
               <h3 className="text-xl font-semibold">{job.title}</h3>
-              <p className="text-blue-400 mb-1">{job.company}</p>
+              <p className="text-blue-400 mb-1">
+                {job.company}{job.location && ` — ${job.location}`}
+              </p>
               <p className="text-sm text-gray-400 mb-3">{job.date}</p>
               <ul className="list-disc list-inside space-y-1 text-gray-300">
                 {job.bullets.map((b, j) => (
