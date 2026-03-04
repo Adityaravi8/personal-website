@@ -12,11 +12,11 @@ import Footer from "./components/Footer";
 
 function App() {
   useEffect(() => {
-    AOS.init({ duration: 800, once: false, mirror: true, easing: "ease-out-cubic" });
+    AOS.init({ duration: 700, once: false, mirror: true, easing: "ease-out-cubic" });
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-[#1c1c2e] text-[#e2e8f0]">
       <Navbar />
       <Hero />
       <About />

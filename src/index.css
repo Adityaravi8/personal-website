@@ -2,269 +2,258 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+/* ============================================================
+   NEUMORPHIC 3D DESIGN SYSTEM
+   ============================================================ */
+
+:root {
+  --bg:         #1c1c2e;
+  --bg-deep:    #16162a;
+  --nm-dark:    #0f0f1e;
+  --nm-light:   #292944;
+
+  --accent:     #38bdf8;
+  --accent-2:   #2dd4bf;
+  --accent-dim: rgba(56, 189, 248, 0.10);
+  --accent-glow: rgba(56, 189, 248, 0.20);
+
+  --text-primary:   #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted:     #4a5568;
 }
 
-/* Typing cursor blink */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
 }
 
-.typing-cursor::after {
-  content: "|";
-  animation: blink 0.8s step-end infinite;
-  color: #60a5fa;
-  margin-left: 2px;
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 3px;
 }
 
-/* Glow pulse for timeline dots */
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 6px rgba(96, 165, 250, 0.4); }
-  50% { box-shadow: 0 0 16px rgba(96, 165, 250, 0.8); }
-}
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
 
-.timeline-dot {
-  animation: glow-pulse 2s ease-in-out infinite;
-}
-
-/* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ==================== 3D EFFECTS ==================== */
-
-/* 3D Card with tilt effect */
-.card-3d {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+/* Section title with gradient underbar */
+.title-3d {
+  position: relative;
+}
+.title-3d::after {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  margin: 14px auto 0;
+  border-radius: 2px;
 }
 
-.card-3d-inner {
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease;
+/* Typing cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.typing-cursor::after {
+  content: "|";
+  animation: blink 0.8s step-end infinite;
+  color: var(--accent);
+  margin-left: 2px;
 }
 
-.card-3d:hover {
-  transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+/* ============================================================
+   NEUMORPHIC SHADOW UTILITIES
+   ============================================================ */
+
+/* Raised surface */
+.nm-raised {
+  background: var(--bg);
   box-shadow:
-    0 25px 50px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(96, 165, 250, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    6px 6px 16px var(--nm-dark),
+    -6px -6px 16px var(--nm-light);
 }
 
+/* Strong float */
+.nm-float {
+  background: var(--bg);
+  box-shadow:
+    10px 10px 28px var(--nm-dark),
+    -10px -10px 28px var(--nm-light);
+}
+
+/* Inset (pressed / input) */
+.nm-inset {
+  background: var(--bg);
+  box-shadow:
+    inset 5px 5px 12px var(--nm-dark),
+    inset -5px -5px 12px var(--nm-light);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.nav-glass {
+  background: rgba(22, 22, 42, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.07);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* Nav link with sliding underline */
+.nav-link {
+  position: relative;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; left: 0;
+  width: 0; height: 1.5px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 1px;
+  transition: width 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-link:hover          { color: var(--accent); }
+.nav-link:hover::after   { width: 100%; }
+
+/* ============================================================
+   3D CARDS  (mouse-tilt via JS is added inline)
+   ============================================================ */
+
+.card-3d {
+  background: var(--bg);
+  border-radius: 18px;
+  box-shadow:
+    8px 8px 22px var(--nm-dark),
+    -8px -8px 22px var(--nm-light);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+}
+
+/* Top accent stripe */
 .card-3d::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.35s ease;
+}
+.card-3d:hover::before { opacity: 1; }
+
+.card-3d:hover {
+  box-shadow:
+    12px 12px 32px var(--nm-dark),
+    -12px -12px 32px var(--nm-light),
+    0 0 0 1px rgba(56, 189, 248, 0.10);
+}
+
+/* Shimmer sweep */
+.card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -75%;
+  width: 50%; height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.045) 50%,
+    transparent 65%
+  );
+  transform: skewX(-15deg);
+  transition: left 0.7s ease;
   pointer-events: none;
+  z-index: 2;
 }
+.card-shimmer:hover::after { left: 130%; }
 
-.card-3d:hover::before {
-  opacity: 1;
-}
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 
-/* 3D Button with depth */
 .btn-3d {
   position: relative;
-  transform-style: preserve-3d;
-  transform: translateZ(0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-radius: 10px;
+  color: #0f172a;
+  font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow:
-    0 4px 0 rgba(37, 99, 235, 1),
-    0 6px 10px rgba(0, 0, 0, 0.3);
+    5px 5px 14px var(--nm-dark),
+    -3px -3px 10px rgba(56, 189, 248, 0.14),
+    0 0 0 1px rgba(56, 189, 248, 0.18);
 }
-
 .btn-3d:hover {
-  transform: translateY(-2px) translateZ(0);
+  transform: translateY(-3px);
   box-shadow:
-    0 6px 0 rgba(37, 99, 235, 1),
-    0 10px 20px rgba(0, 0, 0, 0.4);
+    8px 8px 22px var(--nm-dark),
+    -4px -4px 14px rgba(56, 189, 248, 0.18),
+    0 0 24px rgba(56, 189, 248, 0.10);
 }
-
 .btn-3d:active {
-  transform: translateY(2px) translateZ(0);
+  transform: translateY(2px);
   box-shadow:
-    0 2px 0 rgba(37, 99, 235, 1),
-    0 3px 5px rgba(0, 0, 0, 0.3);
+    inset 3px 3px 8px rgba(0, 0, 0, 0.30),
+    inset -2px -2px 6px rgba(56, 189, 248, 0.10);
 }
 
-/* 3D Border Button */
 .btn-3d-outline {
   position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 10px;
+  color: var(--accent);
+  font-weight: 500;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
   box-shadow:
-    0 4px 0 rgba(96, 165, 250, 0.5),
-    0 6px 10px rgba(0, 0, 0, 0.2);
+    5px 5px 14px var(--nm-dark),
+    -5px -5px 14px var(--nm-light);
 }
-
 .btn-3d-outline:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  background: rgba(56, 189, 248, 0.06);
+  border-color: var(--accent);
   box-shadow:
-    0 6px 0 rgba(96, 165, 250, 0.6),
-    0 10px 20px rgba(0, 0, 0, 0.3);
+    8px 8px 22px var(--nm-dark),
+    -8px -8px 22px var(--nm-light),
+    0 0 18px rgba(56, 189, 248, 0.10);
 }
-
 .btn-3d-outline:active {
   transform: translateY(2px);
   box-shadow:
-    0 2px 0 rgba(96, 165, 250, 0.5),
-    0 3px 5px rgba(0, 0, 0, 0.2);
+    inset 4px 4px 10px var(--nm-dark),
+    inset -4px -4px 10px var(--nm-light);
 }
 
-/* 3D Skill badge with depth */
-.skill-badge-3d {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all 0.3s ease;
-  box-shadow:
-    0 3px 0 rgba(55, 65, 81, 1),
-    0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.skill-badge-3d:hover {
-  transform: translateY(-4px) rotateX(10deg);
-  background-color: rgba(96, 165, 250, 0.15);
-  border-color: #60a5fa;
-  color: #60a5fa;
-  box-shadow:
-    0 6px 0 rgba(96, 165, 250, 0.3),
-    0 10px 20px rgba(96, 165, 250, 0.2);
-}
-
-/* Floating animation for 3D elements */
-@keyframes float-3d {
-  0%, 100% {
-    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
-  }
-  25% {
-    transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
-  }
-  50% {
-    transform: translateY(-5px) rotateX(0deg) rotateY(-2deg);
-  }
-  75% {
-    transform: translateY(-15px) rotateX(-2deg) rotateY(1deg);
-  }
-}
-
-.float-3d {
-  animation: float-3d 6s ease-in-out infinite;
-}
-
-.float-3d-delay-1 {
-  animation: float-3d 6s ease-in-out 1s infinite;
-}
-
-.float-3d-delay-2 {
-  animation: float-3d 6s ease-in-out 2s infinite;
-}
-
-/* 3D Perspective container */
-.perspective-container {
-  perspective: 1500px;
-  transform-style: preserve-3d;
-}
-
-/* 3D Floating orbs */
-@keyframes orbit-3d {
-  0% {
-    transform: rotateX(20deg) rotateY(0deg) translateZ(50px);
-  }
-  100% {
-    transform: rotateX(20deg) rotateY(360deg) translateZ(50px);
-  }
-}
-
-.orb-3d {
-  transform-style: preserve-3d;
-  animation: orbit-3d 20s linear infinite;
-}
-
-/* 3D Text shadow effect */
-.text-3d {
-  text-shadow:
-    1px 1px 0 rgba(96, 165, 250, 0.3),
-    2px 2px 0 rgba(96, 165, 250, 0.2),
-    3px 3px 0 rgba(96, 165, 250, 0.1),
-    4px 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-/* 3D Section title */
-.title-3d {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
-}
-
-.title-3d:hover {
-  transform: rotateX(-5deg) rotateY(5deg) translateZ(20px);
-}
-
-/* ==================== END 3D EFFECTS ==================== */
-
-/* Card hover glow (legacy, enhanced) */
-.card-glow {
-  transition: all 0.3s ease;
-}
-.card-glow:hover {
-  box-shadow: 0 0 20px rgba(96, 165, 250, 0.15), 0 0 40px rgba(96, 165, 250, 0.05);
-  transform: translateY(-4px);
-}
-
-/* Skill badge hover (legacy) */
-.skill-badge {
-  transition: all 0.2s ease;
-}
-.skill-badge:hover {
-  background-color: rgba(96, 165, 250, 0.15);
-  border-color: #60a5fa;
-  color: #60a5fa;
-  transform: translateY(-2px);
-}
-
-/* Social icon hover scale - enhanced 3D */
-.social-icon {
-  transition: all 0.3s ease;
-  transform-style: preserve-3d;
-}
-.social-icon:hover {
-  transform: scale(1.3) translateY(-4px) rotateY(15deg);
-  filter: drop-shadow(0 4px 8px rgba(96, 165, 250, 0.4));
-}
-
-/* Navbar glassmorphism - enhanced with 3D depth */
-.nav-glass {
-  background: rgba(17, 24, 39, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* Form input focus glow - enhanced 3D */
-.input-glow {
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 0 rgba(55, 65, 81, 1);
-}
-.input-glow:focus {
-  box-shadow:
-    0 4px 0 rgba(96, 165, 250, 0.5),
-    0 0 20px rgba(96, 165, 250, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Button shine effect - enhanced */
+/* Shine sweep */
 .btn-shine {
   position: relative;
   overflow: hidden;
@@ -272,19 +261,170 @@ html {
 .btn-shine::after {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 40%;
-  height: 200%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
+  top: -50%; left: -70%;
+  width: 40%; height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
   transform: skewX(-20deg);
-  transition: left 0.5s ease;
+  transition: left 0.55s ease;
 }
-.btn-shine:hover::after {
-  left: 120%;
+.btn-shine:hover::after { left: 130%; }
+
+/* ============================================================
+   SKILL BADGES
+   ============================================================ */
+
+.skill-badge-3d {
+  background: var(--bg);
+  border-radius: 9999px;
+  color: var(--text-secondary);
+  transform-style: preserve-3d;
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    4px 4px 10px var(--nm-dark),
+    -4px -4px 10px var(--nm-light);
+}
+.skill-badge-3d:hover {
+  transform: translateY(-6px) rotateX(14deg);
+  color: var(--accent);
+  box-shadow:
+    7px 7px 18px var(--nm-dark),
+    -7px -7px 18px var(--nm-light),
+    0 0 16px rgba(56, 189, 248, 0.14);
+}
+
+/* ============================================================
+   TIMELINE DOT
+   ============================================================ */
+
+@keyframes pulse-dot {
+  0%,100% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px rgba(56,189,248,0.30); }
+  50%      { box-shadow: 0 0 0 3px var(--bg), 0 0 0 8px rgba(56,189,248,0.12); }
+}
+.timeline-dot {
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   SOCIAL ICONS
+   ============================================================ */
+
+.social-icon {
+  transition: all 0.28s ease;
+  transform-style: preserve-3d;
+}
+.social-icon:hover {
+  color: var(--accent);
+  transform: translateY(-5px) rotateY(20deg);
+  filter: drop-shadow(0 5px 10px rgba(56, 189, 248, 0.28));
+}
+
+/* ============================================================
+   FORM INPUTS  (neumorphic inset)
+   ============================================================ */
+
+.input-glow {
+  background: var(--bg);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow:
+    inset 4px 4px 10px var(--nm-dark),
+    inset -4px -4px 10px var(--nm-light);
+}
+.input-glow::placeholder { color: var(--text-muted); }
+.input-glow:focus {
+  outline: none;
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow:
+    inset 4px 4px 10px var(--nm-dark),
+    inset -4px -4px 10px var(--nm-light),
+    0 0 0 2px rgba(56, 189, 248, 0.10);
+}
+
+/* ============================================================
+   FLOATING ANIMATIONS
+   ============================================================ */
+
+@keyframes float-3d {
+  0%,100% { transform: translateY(0)    scale(1.00); }
+  40%      { transform: translateY(-20px) scale(1.03); }
+  70%      { transform: translateY(-8px)  scale(0.98); }
+}
+.float-3d          { animation: float-3d  9s ease-in-out        infinite; }
+.float-3d-delay-1  { animation: float-3d 11s ease-in-out 2s     infinite; }
+.float-3d-delay-2  { animation: float-3d  8s ease-in-out 4s     infinite; }
+
+/* ============================================================
+   PERSPECTIVE CONTAINER
+   ============================================================ */
+
+.perspective-container {
+  perspective: 2000px;
+  transform-style: preserve-3d;
+}
+
+/* ============================================================
+   SECTION DIVIDER
+   ============================================================ */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56,189,248,0.30), rgba(45,212,191,0.30), transparent);
+}
+
+/* ============================================================
+   TECH BADGE (project cards)
+   ============================================================ */
+
+.tech-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  background: var(--bg-deep);
+  border-radius: 6px;
+  color: var(--accent);
+  box-shadow:
+    2px 2px 6px var(--nm-dark),
+    -2px -2px 6px var(--nm-light);
+  transition: all 0.22s ease;
+}
+.tech-badge:hover {
+  color: var(--accent-2);
+  box-shadow:
+    3px 3px 8px var(--nm-dark),
+    -3px -3px 8px var(--nm-light),
+    0 0 10px rgba(56, 189, 248, 0.12);
+}
+
+/* ============================================================
+   ABOUT  — holographic top-line panel
+   ============================================================ */
+
+.holo-panel {
+  position: relative;
+  background: var(--bg);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    8px 8px 22px var(--nm-dark),
+    -8px -8px 22px var(--nm-light);
+}
+.holo-panel::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   FADE IN UP  (keyframe for inline Tailwind animation)
+   ============================================================ */
+
+@keyframes fadeInUp {
+  0%   { opacity: 0; transform: translateY(22px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
