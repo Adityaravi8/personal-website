@@ -12,7 +12,7 @@ export const hero = {
 export const about = {
   paragraphs: [
     "I'm a Software engineering student passionate about AI, problem-solving, and building software that makes a difference. I have hands on experience working with cloud infrastructure, full-stack web development, through my various internships and personal projects.",
-    "When I'm not coding, you can find me working out, hanging out with friends, or exploring. I'm currently looking for internship for summer 2026 and entry-level opportunities where I can continue contributing and grow.",
+    "I'm currently looking for internship for summer 2026 and entry-level opportunities where I can continue contributing and grow.",
   ],
   highlights: [
     "Currently pursuing B.Eng. in Software Engineering at Ontario Tech University",
@@ -28,7 +28,6 @@ export const experience = [
     bullets: [
       "Leveraging AI tools to modernize legacy applications for an enterprise client",
       "Designed an AI-powered toolkit that generates technical design documents from legacy codebases to help with understanding old applications.",
-      "Presented the AI modernization strategy to executives within CGI and the client, demonstrating business value and technical scalability.",
       "Created the AI-assisted workflow adopted by multiple developers for future application rebuilds.",
     ],
   },
@@ -51,7 +50,7 @@ export const experience = [
     bullets: [
       "Built a coordinated navigation algorithm enabling multiple robots to move intelligently in shared environments.",
       "Implemented custom ROS 2 features on physical agents.",
-      "Optimized reinforcement learning algorithm to improve training performance.",
+      "Trained multiple robots using reinforcement learning to optimize navigation strategies.",
     ],
   },
   {
@@ -93,8 +92,9 @@ export const projects = [
     title: "AI Travel Planner",
     description:
       "An AI-powered travel planning app that generates personalized itineraries.",
-    tech: ["React.js", "Tailwind CSS", "Node.js", "OpenAI API"],
+    tech: ["React.js", "Tailwind CSS", "Node.js", "OpenAI API", "Lang Chain"],
     github: "https://github.com/Adityaravi8/AI-Travel-Planner",
+    live: "https://ai-travel-planner-three-psi.vercel.app/"
   },
 ];
 
@@ -104,15 +104,14 @@ export const skills = {
     "Python",
     "Java",
     "C++",
-    "HTML",
     "CSS",
     "SQL",
     "TypeScript",
   ],
   Frameworks: [
-    "React",
+    "React.js",
     "Node.js",
-    "Express",
+    "Express.js",
     "Tailwind CSS",
     "Next.js",
     "Flask",
